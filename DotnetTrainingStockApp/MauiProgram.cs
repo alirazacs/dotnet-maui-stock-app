@@ -1,7 +1,8 @@
-﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui;
 using DotnetTrainingStockApp.ViewModels;
 using DotnetTrainingStockApp.Views;
 using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace DotnetTrainingStockApp
 {
@@ -13,6 +14,7 @@ namespace DotnetTrainingStockApp
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

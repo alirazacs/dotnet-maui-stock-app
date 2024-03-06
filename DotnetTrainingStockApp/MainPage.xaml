@@ -37,6 +37,9 @@
                 SemanticProperties.Hint="Opens Gallery to select an existing photo"
                 Clicked="OnSelectPhotoBtnClicked"
                 HorizontalOptions="Fill" />
+            <Button 
+                Text="Move to next page"
+                Clicked="NextPageButtonClicked"/>
         </VerticalStackLayout>
     </ScrollView>
 

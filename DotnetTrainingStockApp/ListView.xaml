@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
+xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:local="clr-namespace:DotnetTrainingStockApp"
+             x:Class="DotnetTrainingStockApp.ListView">
+
+    <!---Binding page to items view model-->
+    <ContentPage.BindingContext>
+        <local:ItemsModel></local:ItemsModel>
+    </ContentPage.BindingContext>
+
+    <sf:SfListView ItemsSource="{Binding ItemsList}" EmptyView="Your cart is empty!">
+
+        <sf:SfListView.HeaderTemplate>
+            <DataTemplate>
+                <Grid BackgroundColor="SlateGrey" >
+                    <Label Text="Your Cart"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           TextColor="White"/>
+                </Grid>
+            </DataTemplate>
+        </sf:SfListView.HeaderTemplate>
+
+        <sf:SfListView.ItemTemplate>
+
+            <DataTemplate>
+                <Border>
+                    <Grid BackgroundColor="LightBlue">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Item Name Label -->
+                        <Label Text="{Binding ItemName, StringFormat='{}Name: {0}'}" TextColor="CadetBlue" />
+
+                        <!-- Nested Grid for Labels and Button -->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label Text="{Binding ItemPrice,StringFormat='{}Price: {0}'} " Grid.Column="0" />
+
+                            <Label Text="{Binding Quanity,StringFormat='{}Quantity: {0}'}" Grid.Column="1"/>
+
+                            <Label Text="{Binding TotalAmount,StringFormat='{}Total: {0}'}" Grid.Column="2" />
+
+                            <Button Text="Click Me" Grid.Column="3" HorizontalOptions="Center"    />
+
+                        </Grid>
+              
+                    </Grid>
+                </Border>
+            </DataTemplate>
+
+        </sf:SfListView.ItemTemplate>
+
+
+
+    </sf:SfListView>
+</ContentPage>
