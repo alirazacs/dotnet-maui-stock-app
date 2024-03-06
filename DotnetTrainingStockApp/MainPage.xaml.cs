@@ -19,7 +19,7 @@ namespace DotnetTrainingStockApp
 
         private void addDataInLocalStorage()
         {
-            List<Items>ItemsList = new List<Items>();
+           /* List<Items>ItemsList = new List<Items>();
             ItemsList.Add(new Items("ABC", 1, 3.5));
             ItemsList.Add(new Items("ABC1", 23, 2));
             ItemsList.Add(new Items("ABC2", 3, 4.5));
@@ -39,7 +39,7 @@ namespace DotnetTrainingStockApp
             ItemsList.Add(new Items("ABC16", 3, 4.5));
             ItemsList.Add(new Items("ABC17", 5, 7.5));
             string serializedList = JsonSerializer.Serialize(ItemsList);
-            preferenceService.SetDataInPreferences("cart", serializedList);
+            preferenceService.SetDataInPreferences("cart", serializedList);*/
         }
 
         /*private void OnCounterClicked(object sender, EventArgs e)
