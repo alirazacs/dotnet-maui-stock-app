@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DotnetTrainingStockApp.Views.StockItemDetailsPage"
+             xmlns:viewmodel="clr-namespace:DotnetTrainingStockApp.ViewModels"
+             x:DataType="viewmodel:StockItemDetailsViewModel"
              Shell.NavBarIsVisible="True"
              Title="StockItemDetailsPage">
     <VerticalStackLayout>
@@ -9,6 +11,8 @@
             Text="Some details"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Image Source="{Binding Path}" />
 
         <Button
             x:Name="AddToCartBtn"
