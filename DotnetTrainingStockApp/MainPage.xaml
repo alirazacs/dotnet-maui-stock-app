@@ -7,22 +7,22 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+            <!--<image
+                source="dotnet_bot.png"
+                heightrequest="185"
+                aspect="aspectfit"
+                semanticproperties.description="dot net bot in a race car number eight" />-->
 
             <Label
-                Text="Hello, World!"
+                Text="Hello!"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
+                Text="Welcome to the &#10; Smart Stock App"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+                SemanticProperties.Description="Please take a new photo or select an existing one" />
 
             <Button
                 x:Name="TakePhotoBtn"
