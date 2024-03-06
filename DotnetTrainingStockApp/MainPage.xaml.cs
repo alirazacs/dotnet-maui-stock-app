@@ -1,4 +1,6 @@
-﻿namespace DotnetTrainingStockApp
+﻿using DotnetTrainingStockApp.Views;
+
+namespace DotnetTrainingStockApp
 {
     public partial class MainPage : ContentPage
     {
@@ -21,7 +23,7 @@
             SemanticScreenReader.Announce(CounterBtn.Text);
         }*/
 
-        public async void TakePhoto(object sender, EventArgs e)
+        private async void OnTakePhotoBtnClicked(object sender, EventArgs e)
         {
             if (MediaPicker.Default.IsCaptureSupported)
             {
@@ -36,11 +38,14 @@
                     using FileStream localFileStream = File.OpenWrite(localFilePath);
 
                     await sourceStream.CopyToAsync(localFileStream);
+
+                    var route = $"{nameof(StockItemDetailsPage)}";
+                    await Shell.Current.GoToAsync(route);
                 }
             }
         }
 
-        public async void SelectPhoto(object sender, EventArgs e)
+        private async void OnSelectPhotoBtnClicked(object sender, EventArgs e)
         {
             if (MediaPicker.Default.IsCaptureSupported)
             {
@@ -55,6 +60,9 @@
                     using FileStream localFileStream = File.OpenWrite(localFilePath);
 
                     await sourceStream.CopyToAsync(localFileStream);
+
+                    var route = $"{nameof(StockItemDetailsPage)}";
+                    await Shell.Current.GoToAsync(route);
                 }
             }
         }

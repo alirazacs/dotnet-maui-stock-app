@@ -28,14 +28,14 @@
                 x:Name="TakePhotoBtn"
                 Text="Take Photo" 
                 SemanticProperties.Hint="Opens Camera to take a new photo"
-                Clicked="TakePhoto"
+                Clicked="OnTakePhotoBtnClicked"
                 HorizontalOptions="Fill" />
 
             <Button
                 x:Name="SelectPhotoBtn"
                 Text="Select Photo" 
                 SemanticProperties.Hint="Opens Gallery to select an existing photo"
-                Clicked="SelectPhoto"
+                Clicked="OnSelectPhotoBtnClicked"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
