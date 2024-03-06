@@ -6,11 +6,12 @@ namespace DotnetTrainingStockApp
     public partial class MainPage : ContentPage
     {
         int count = 0;
+        PreferenceService preferenceService;
 
         public MainPage()
         {
             InitializeComponent();
-
+            preferenceService  = new PreferenceService();
             addDataInLocalStorage();
         }
 
@@ -36,7 +37,7 @@ namespace DotnetTrainingStockApp
             ItemsList.Add(new Items("ABC16", 3, 4.5));
             ItemsList.Add(new Items("ABC17", 5, 7.5));
             string serializedList = JsonSerializer.Serialize(ItemsList);
-            Preferences.Set("cart", serializedList);
+            preferenceService.SetDataInPreferences("cart", serializedList);
         }
 
         /*private void OnCounterClicked(object sender, EventArgs e)

@@ -10,20 +10,15 @@ namespace DotnetTrainingStockApp
 {
     public class ItemsModel
     {
+        private PreferenceService preferenceService = new PreferenceService();
         public ObservableCollection<Items> ItemsList {  get; set; }
         public ItemsModel()
         {
             ItemsList = new ObservableCollection<Items>();
-            if (Preferences.ContainsKey("cart"))
+            if (preferenceService.DoesContainsKey("cart"))
             {
-                string data = Preferences.Get("cart", string.Empty);
-                if (data != null)
-                {
-                    ItemsList = JsonSerializer.Deserialize<ObservableCollection<Items>>(data);
-                }
-
+                ItemsList = preferenceService.GetDataFromPreferences<ObservableCollection<Items>>("cart");
             }
-
         }
     }
 
