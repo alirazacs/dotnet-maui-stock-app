@@ -61,8 +61,7 @@ public partial class StockItemDetailsPage : ContentPage
         {
             ActivityHandler.IsRunning = isVisible;
             ActivityHandler.IsVisible = isVisible;
-            ChipsGroup.IsVisible = !isVisible;
-            DetectedHeadingLabel.IsVisible = !isVisible; 
+            ContentLayout.IsVisible = !isVisible; 
         });
     }
 

@@ -10,14 +10,14 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              Title="StockItemDetailsPage">
     <VerticalStackLayout>
         <Label 
-            Text="Some details"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+                Text="Some details"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
 
         <Image Source="{Binding Path}" HeightRequest="200" WidthRequest="200" />
         <ActivityIndicator IsRunning="False" Color="Blue" IsVisible="False" x:Name="ActivityHandler"/>
-       
-        <Label Text="Detected Labels" 
+        <VerticalStackLayout x:Name="ContentLayout">
+            <Label Text="Detected Labels" 
                FontSize="Large"
                Margin="15,0"
                BackgroundColor="CornflowerBlue"
@@ -25,36 +25,39 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
                HorizontalOptions="Center"
                x:Name="DetectedHeadingLabel"/>
 
-        <core:SfChipGroup 
-            ItemsSource="{Binding Tags}"              
-            ChipType="Action"
-            HorizontalOptions="Center"
-            Margin="0,10,0,10"
-            ChipBackground="CornflowerBlue"
-            ChipTextColor="White"
-            x:Name="ChipsGroup"
+            <core:SfChipGroup 
+                ItemsSource="{Binding Tags}"              
+                ChipType="Action"
+                HorizontalOptions="Center"
+                Margin="0,10,0,10"
+                ChipBackground="CornflowerBlue"
+                ChipTextColor="White"
+                x:Name="ChipsGroup"
                           >
-            <core:SfChipGroup.Items>
-                <core:SfChip
+                <core:SfChipGroup.Items>
+                    <core:SfChip
                     Text="{Binding}" />
-            </core:SfChipGroup.Items>
-        </core:SfChipGroup>
+                </core:SfChipGroup.Items>
+            </core:SfChipGroup>
 
-        <Label 
-            x:Name="ExpiryDateLabel"
-            Text="Expiry Date:"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            TextColor="Red"
+            <Label 
+                x:Name="ExpiryDateLabel"
+                Text="Expiry Date:"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Red"
             />
 
-        <Button
+            <Button
             x:Name="AddToCartBtn"
             Text="Add to cart" 
             SemanticProperties.Hint="Adds this item to the cart"
             Clicked="OnAddToCartBtnClicked"
             HorizontalOptions="Center"
             Margin="0,5,0,0"/>
+        </VerticalStackLayout>
+
+
 
     </VerticalStackLayout>
 </ContentPage>
