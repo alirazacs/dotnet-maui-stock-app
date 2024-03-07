@@ -94,10 +94,14 @@ namespace DotnetTrainingStockApp
                     // save the file into local storage
                     string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
 
-                    using Stream sourceStream = await photo.OpenReadAsync();
-                    using FileStream localFileStream = File.OpenWrite(localFilePath);
+                    using (Stream sourceStream = await photo.OpenReadAsync())
+                    {
+                        using (FileStream localFileStream = File.OpenWrite(localFilePath))
+                        {
+                            await sourceStream.CopyToAsync(localFileStream);
+                        }
+                    }
 
-                    await sourceStream.CopyToAsync(localFileStream);
 
                     var route = $"{nameof(StockItemDetailsPage)}";
                     await Shell.Current.GoToAsync($"{route}?Photo={localFilePath}");
