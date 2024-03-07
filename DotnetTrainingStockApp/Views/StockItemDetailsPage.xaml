@@ -34,6 +34,17 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <Label 
+            Text="Expiry Date:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+
+        <Label 
+            Text="{Binding ExpiryDate}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
 
         <Button
             x:Name="AddToCartBtn"
