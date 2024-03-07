@@ -23,11 +23,12 @@ public partial class StockItemDetailsPage : ContentPage
         ((StockItemDetailsViewModel)BindingContext).Path = Photo;
         if (Photo != null)
         {
-            AnalyzeImage(File.ReadAllBytes(Photo));
+           var tags = AnalyzeImage(File.ReadAllBytes(Photo));
+           ((StockItemDetailsViewModel)BindingContext).Tags= tags;
         }
     }
 
-    private static void AnalyzeImage(byte[] data)
+    private static List<string> AnalyzeImage(byte[] data)
     {
 
         //images used for scanning expiry date:
@@ -43,6 +44,7 @@ public partial class StockItemDetailsPage : ContentPage
         string endpoint = "https://stockvision.cognitiveservices.azure.com/";
         string key = "209f0f88a4fd4522808428efe55be4c3";
         List<string> dates = new List<string>();
+        List<string> tags = new List<string>();
 
         ImageAnalysisClient client = new ImageAnalysisClient(
             new Uri(endpoint),
@@ -59,6 +61,7 @@ public partial class StockItemDetailsPage : ContentPage
         {
             for (int i = 0; i < maxTag; i++)
             {
+                tags.Add(result.Tags.Values[i].Name);
                 Console.WriteLine(result.Tags.Values[i].Name);
             }
         }
@@ -66,9 +69,13 @@ public partial class StockItemDetailsPage : ContentPage
         {
             foreach (DetectedTag obj in result?.Tags?.Values)
             {
+                tags.Add(obj.Name);
                 Console.WriteLine(obj.Name);
             }
         }
+
+        ListView listView = new ListView();
+        listView.SetBinding(ItemsView.ItemsSourceProperty, "tags");
 
 
         //reading the lines,words to fetch expiry date.
@@ -98,6 +105,8 @@ public partial class StockItemDetailsPage : ContentPage
                 Console.WriteLine("Expiry date is" + dates[dates.Count - 1]);
             }
         }
+
+        return tags;
     }
 
     //private string analyzeimage(byte[] data)
