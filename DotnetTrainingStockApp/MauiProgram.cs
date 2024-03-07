@@ -1,4 +1,6 @@
 using CommunityToolkit.Maui;
+using DotnetTrainingStockApp.ViewModels;
+using DotnetTrainingStockApp.Views;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 
@@ -18,6 +20,10 @@ namespace DotnetTrainingStockApp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddSingleton<StockItemDetailsPage>();
+            builder.Services.AddSingleton<StockItemDetailsViewModel>();
+
 
 #if DEBUG
     		builder.Logging.AddDebug();
