@@ -25,16 +25,45 @@ public partial class StockItemDetailsPage : ContentPage
         ((StockItemDetailsViewModel)BindingContext).Path = Photo;
         if (Photo != null)
         {
+            //showing loading icon on main thread
+            SetActivityIndicatorVisibility(true);
 
+            //running another thread to analyze picture 
             Task.Run(async () =>
             {
-                var analyzeImage = await AnalyzeImage(File.ReadAllBytes(Photo));
-                ((StockItemDetailsViewModel)BindingContext).Tags = analyzeImage.tags;
-                ((StockItemDetailsViewModel)BindingContext).ExpiryDate = analyzeImage.expiryDate;
-      
+                await PerformImageAnalysisAsync(Photo);
             });
 
         }
+    }
+
+    private async Task PerformImageAnalysisAsync(string Photo)
+    {
+        try
+        {
+            var analyzeImage = await AnalyzeImage(File.ReadAllBytes(Photo));
+            //updating UI on main thread 
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                ((StockItemDetailsViewModel)BindingContext).Tags = analyzeImage.tags;
+                ((StockItemDetailsViewModel)BindingContext).ExpiryDate = analyzeImage.expiryDate;
+            });
+        }
+        finally
+        {
+            SetActivityIndicatorVisibility(false);
+        }
+    }
+
+    private void SetActivityIndicatorVisibility(bool isVisible)
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            ActivityHandler.IsRunning = isVisible;
+            ActivityHandler.IsVisible = isVisible;
+            ChipsGroup.IsVisible = !isVisible;
+            DetectedHeadingLabel.IsVisible = !isVisible; 
+        });
     }
 
     private async Task<AnalyzedImage> AnalyzeImage(byte[] data)
