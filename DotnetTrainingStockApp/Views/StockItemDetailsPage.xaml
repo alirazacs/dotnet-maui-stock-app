@@ -16,14 +16,13 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
 
         <Image Source="{Binding Path}" HeightRequest="200" WidthRequest="200" />
         <ActivityIndicator IsRunning="False" Color="Blue" IsVisible="False" x:Name="ActivityHandler"/>
-        <VerticalStackLayout x:Name="ContentLayout">
+        <VerticalStackLayout x:Name="ContentLayout" Margin="10">
             <Label Text="Detected Labels" 
                FontSize="Large"
                Margin="15,0"
                BackgroundColor="CornflowerBlue"
                TextColor="White"
-               HorizontalOptions="Center"
-               x:Name="DetectedHeadingLabel"/>
+               HorizontalOptions="Center"/>
 
             <core:SfChipGroup 
                 ItemsSource="{Binding Tags}"              
@@ -31,18 +30,18 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
                 HorizontalOptions="Center"
                 Margin="0,10,0,10"
                 ChipBackground="CornflowerBlue"
-                ChipTextColor="White"
-                x:Name="ChipsGroup"
-                          >
+                ChipTextColor="White">
+                
                 <core:SfChipGroup.Items>
                     <core:SfChip
                     Text="{Binding}" />
                 </core:SfChipGroup.Items>
+                
             </core:SfChipGroup>
 
             <Label 
                 x:Name="ExpiryDateLabel"
-                Text="Expiry Date:"
+                Text="{Binding ExpiryDate,StringFormat='{}Expiry Date: {0}'}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 TextColor="Red"

@@ -11,7 +11,7 @@ namespace DotnetTrainingStockApp.Views;
 public partial class StockItemDetailsPage : ContentPage
 {
 	public string? Photo {  get; set; }
-    bool isBusy = false;
+
 	public StockItemDetailsPage(StockItemDetailsViewModel stockItemDetailsViewModel)
 	{
 		InitializeComponent();
@@ -106,11 +106,33 @@ public partial class StockItemDetailsPage : ContentPage
             }
         }
 
-        // Other processing...
+        foreach (DetectedTextBlock block in result.Read.Blocks)
+        {
+            foreach (DetectedTextLine line in block.Lines)
+            {
+                foreach (DetectedTextWord word in line.Words)
+                {
+                    if (word.Text.Contains("/"))
+                    {
+                        //adding all dates having format with /
+                        dates.Add(word.Text);
+                    }
+                }
+            }
+        }
+
+        if (dates.Count > 0)
+        {
+            Match match = Regex.Match(dates[dates.Count - 1], pattern);
+            if (match.Success)
+            {
+                expiryDate = dates[dates.Count - 1];
+            }
+        }
 
         return new AnalyzedImage
         {
-            expiryDate = expiryDate,
+            expiryDate = expiryDate ?? "Not Found",
             tags = tags
         };
     }
