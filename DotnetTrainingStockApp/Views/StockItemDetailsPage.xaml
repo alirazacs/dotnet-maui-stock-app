@@ -54,6 +54,10 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             Clicked="OnAddToCartBtnClicked"
             HorizontalOptions="Center"
             Margin="0,5,0,0"/>
+            <Button x:Name="AddToDbBtn"
+                    Text="Add to database"
+                    Clicked="AddToDbBtn_Clicked"
+                    />
         </VerticalStackLayout>
 
 

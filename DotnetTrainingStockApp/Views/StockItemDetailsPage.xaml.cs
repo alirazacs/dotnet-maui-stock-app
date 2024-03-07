@@ -11,11 +11,13 @@ namespace DotnetTrainingStockApp.Views;
 public partial class StockItemDetailsPage : ContentPage
 {
 	public string? Photo {  get; set; }
-
-	public StockItemDetailsPage(StockItemDetailsViewModel stockItemDetailsViewModel)
+    private AnalyzedImage analyzeImage { get; set; }
+    private DataBaseService dataBaseService { get; set; }
+    public StockItemDetailsPage(StockItemDetailsViewModel stockItemDetailsViewModel)
 	{
 		InitializeComponent();
         BindingContext = stockItemDetailsViewModel;
+        dataBaseService = new DataBaseService();
     }
 
 	protected override void OnAppearing()
@@ -41,7 +43,7 @@ public partial class StockItemDetailsPage : ContentPage
     {
         try
         {
-            var analyzeImage = await AnalyzeImage(File.ReadAllBytes(Photo));
+            analyzeImage = await AnalyzeImage(File.ReadAllBytes(Photo)) as AnalyzedImage;
             //updating UI on main thread 
             MainThread.BeginInvokeOnMainThread(() =>
             {
@@ -141,7 +143,11 @@ public partial class StockItemDetailsPage : ContentPage
 	{
 		await Shell.Current.GoToAsync("..");
 	}
-  
+
+    private async void AddToDbBtn_Clicked(object sender, EventArgs e)
+    {
+        await dataBaseService.AddScannedEntity(new ScannedEntity { ExpiryDate = analyzeImage.expiryDate });
+    }
 }
 
 

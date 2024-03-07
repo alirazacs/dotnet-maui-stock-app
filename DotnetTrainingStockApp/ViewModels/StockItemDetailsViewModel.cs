@@ -11,6 +11,11 @@ public partial class StockItemDetailsViewModel : ObservableObject
     private List<string> tags;
     [ObservableProperty]
     private string expiryDate;
+
+    public static implicit operator StockItemDetailsViewModel(AnalyzedImage v)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 
