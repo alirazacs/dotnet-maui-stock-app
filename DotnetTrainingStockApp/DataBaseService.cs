@@ -44,5 +44,7 @@ namespace DotnetTrainingStockApp
         public long Id { get; set; }
         [Column("ExpiryDate")]
         public string ExpiryDate { get; set; }
+        [Column("Tags")]
+        public string Tags { get; set; }
     }
 }
