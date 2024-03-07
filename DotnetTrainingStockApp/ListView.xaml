@@ -5,7 +5,8 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DotnetTrainingStockApp"
              xmlns:sf="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
-             x:Class="DotnetTrainingStockApp.ListView">
+             x:Class="DotnetTrainingStockApp.ListView"
+             Title="Cart Details">
 
     <sf:SfDataGrid ItemsSource="{Binding ItemsList}"
                    AutoGenerateColumnsMode="None"
@@ -47,7 +48,14 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             <sf:DataGridTemplateColumn ColumnWidthMode="Fill">
                 <sf:DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <Button Text="Remove" Clicked="DeleteItem" CommandParameter="{Binding}"/>
+                        <Button 
+                            Text="Remove" 
+                            FontSize="Micro" 
+                            Margin="2" 
+                            Clicked="DeleteItem" 
+                            CommandParameter="{Binding}"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand" />
                     </DataTemplate>
                 </sf:DataGridTemplateColumn.CellTemplate>
             </sf:DataGridTemplateColumn>
@@ -55,7 +63,7 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
         </sf:SfDataGrid.Columns>
         <sf:SfDataGrid.GroupSummaryRows>
             <sf:DataGridSummaryRow >
-                
+              
             </sf:DataGridSummaryRow>
         </sf:SfDataGrid.GroupSummaryRows>
     </sf:SfDataGrid>
