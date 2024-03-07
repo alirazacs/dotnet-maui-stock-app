@@ -6,5 +6,7 @@ public partial class StockItemDetailsViewModel : ObservableObject
 {
     [ObservableProperty]
     string? path;
+
+    [ObservableProperty] private List<string> tags;
 }
 

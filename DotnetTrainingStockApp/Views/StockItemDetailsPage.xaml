@@ -12,7 +12,28 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Image Source="{Binding Path}" />
+        <Image Source="{Binding Path}" HeightRequest="200" WidthRequest="200" />
+
+        <ListView ItemsSource="{Binding Tags}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Text="{Binding }"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
 
         <Button
             x:Name="AddToCartBtn"
