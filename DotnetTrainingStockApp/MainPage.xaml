@@ -12,7 +12,6 @@
                 heightrequest="185"
                 aspect="aspectfit"
                 semanticproperties.description="dot net bot in a race car number eight" />-->
-
             <Label
                 Text="Hello!"
                 Style="{StaticResource Headline}"

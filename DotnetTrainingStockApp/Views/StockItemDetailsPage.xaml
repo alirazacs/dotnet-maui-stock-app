@@ -15,14 +15,14 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             HorizontalOptions="Center" />
 
         <Image Source="{Binding Path}" HeightRequest="200" WidthRequest="200" />
-
+        <ActivityIndicator IsRunning="False" Color="Blue" IsVisible="False" x:Name="ActivityHandler"/>
         <Label Text="Detected Labels" 
                FontSize="Large"
                Margin="15,0"
                BackgroundColor="CornflowerBlue"
                TextColor="White"
                HorizontalOptions="Center"/>
-        
+
         <core:SfChipGroup 
             ItemsSource="{Binding Tags}"              
             ChipType="Action"
