@@ -4,6 +4,7 @@ using CommunityToolkit.Maui.Converters;
 using DotnetTrainingStockApp.ViewModels;
 using System.Text.RegularExpressions;
 
+
 namespace DotnetTrainingStockApp.Views;
 
 [QueryProperty(nameof(Photo), nameof(Photo))]
@@ -23,12 +24,13 @@ public partial class StockItemDetailsPage : ContentPage
         ((StockItemDetailsViewModel)BindingContext).Path = Photo;
         if (Photo != null)
         {
-           var tags = AnalyzeImage(File.ReadAllBytes(Photo));
-           ((StockItemDetailsViewModel)BindingContext).Tags= tags;
+           var analyzeImage = AnalyzeImage(File.ReadAllBytes(Photo));
+           ((StockItemDetailsViewModel)BindingContext).Tags= analyzeImage.tags;
+           ((StockItemDetailsViewModel)BindingContext).ExpiryDate = analyzeImage.expiryDate;
         }
     }
 
-    private static List<string> AnalyzeImage(byte[] data)
+    private AnalyzedImage AnalyzeImage(byte[] data)
     {
 
         //images used for scanning expiry date:
@@ -45,6 +47,7 @@ public partial class StockItemDetailsPage : ContentPage
         string key = "209f0f88a4fd4522808428efe55be4c3";
         List<string> dates = new List<string>();
         List<string> tags = new List<string>();
+        string expiryDate = null;
 
         ImageAnalysisClient client = new ImageAnalysisClient(
             new Uri(endpoint),
@@ -56,7 +59,6 @@ public partial class StockItemDetailsPage : ContentPage
 
         string pattern = @"\b\d{1,2}/\d{1,2}/\d{2}(?:\d{2})?\b"; //for dates like : 12/01/21  OR 12/01/2021 (date/month/year)
 
-        Console.WriteLine("Detected Tags are :");
         if (result?.Tags?.Values.Count > maxTag)
         {
             for (int i = 0; i < maxTag; i++)
@@ -76,7 +78,6 @@ public partial class StockItemDetailsPage : ContentPage
 
         ListView listView = new ListView();
         listView.SetBinding(ItemsView.ItemsSourceProperty, "tags");
-
 
         //reading the lines,words to fetch expiry date.
 
@@ -102,33 +103,25 @@ public partial class StockItemDetailsPage : ContentPage
             Match match = Regex.Match(dates[dates.Count - 1], pattern);
             if (match.Success)
             {
-                Console.WriteLine("Expiry date is" + dates[dates.Count - 1]);
+                expiryDate = dates[dates.Count - 1];
             }
         }
 
-        return tags;
+        AnalyzedImage analyzeImage = new AnalyzedImage();
+        analyzeImage.expiryDate = expiryDate;
+        analyzeImage.tags = tags;
+        return analyzeImage;
+
+
     }
-
-    //private string analyzeimage(byte[] data)
-    //{
-    //    console.writeline("adsfasdfasdfadsf");
-    //    string endpoint = "https://stockvision.cognitiveservices.azure.com/";
-    //    string key = "209f0f88a4fd4522808428efe55be4c3";
-
-    //    binarydata binarydata = new binarydata(data);
-
-    //    imageanalysisclient client = new imageanalysisclient(
-    //        new uri(endpoint),
-    //        new azurekeycredential(key));
-
-    //    imageanalysisresult result = client.analyze(
-    //      binarydata,
-    //        visualfeatures.tags);
-    //    return result.tags.values[0].name;
-    //}
 
     private async void OnAddToCartBtnClicked(object sender, EventArgs e)
 	{
 		await Shell.Current.GoToAsync("..");
 	}
+  
 }
+
+
+
+

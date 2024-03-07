@@ -37,6 +37,17 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             </core:SfChipGroup.Items>
         </core:SfChipGroup>
 
+        <Label 
+            Text="Expiry Date:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+
+        <Label 
+            Text="{Binding ExpiryDate}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
 
             <Button
             x:Name="AddToCartBtn"
