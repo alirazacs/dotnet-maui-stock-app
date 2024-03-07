@@ -110,6 +110,7 @@ public partial class StockItemDetailsPage : ContentPage
         AnalyzedImage analyzeImage = new AnalyzedImage();
         analyzeImage.expiryDate = expiryDate;
         analyzeImage.tags = tags;
+        ExpiryDateLabel.Text = $"Expiry Date: {(String.IsNullOrEmpty(expiryDate) ? "Not Found" : expiryDate)}";
         return analyzeImage;
 
 
