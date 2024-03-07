@@ -50,7 +50,8 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             Text="Add to cart" 
             SemanticProperties.Hint="Adds this item to the cart"
             Clicked="OnAddToCartBtnClicked"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            Margin="0,5,0,0"/>
 
     </VerticalStackLayout>
 </ContentPage>
