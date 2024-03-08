@@ -99,7 +99,6 @@ public partial class StockItemDetailsPage : ContentPage
             for (int i = 0; i < maxTag; i++)
             {
                 tags.Add(result.Tags.Values[i].Name);
-                Console.WriteLine(result.Tags.Values[i].Name);
             }
         }
         else
@@ -107,13 +106,6 @@ public partial class StockItemDetailsPage : ContentPage
             foreach (DetectedTag obj in result?.Tags?.Values)
             {
                 tags.Add(obj.Name);
-                Console.WriteLine(obj.Name);
-            }
-
-            foreach (DetectedTag obj in result?.Tags?.Values)
-            {
-                tags.Add(obj.Name);
-                Console.WriteLine(obj.Name);
             }
         }
 

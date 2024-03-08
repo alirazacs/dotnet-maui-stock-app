@@ -7,10 +7,10 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:sf="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              x:DataType="viewmodel:StockItemDetailsViewModel"
              Shell.NavBarIsVisible="True"
-             Title="StockItemDetailsPage">
+             Title="Item Details Page">
     <VerticalStackLayout>
         <Label 
-                Text="Some details"
+                Text="Item details"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
