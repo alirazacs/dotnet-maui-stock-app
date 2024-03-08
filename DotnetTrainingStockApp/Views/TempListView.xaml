@@ -8,13 +8,19 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
 
 
     <StackLayout>
-
+        <Label 
+            x:Name="EmptyListViewMessage"
+            Text="No items to display"
+            IsVisible="False" 
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand" />
+        
         <ListView x:Name="ItemsListView"
                   HasUnevenRows="True"
                   ItemsSource="{Binding scannedEntities}"
                   Header="Saved Scanned Items"
                   BackgroundColor="#9BC8FA"
-                  SeparatorColor="#003775">
+                  SeparatorColor="#003775" SelectionMode="None">
             
             <ListView.HeaderTemplate>
                 <DataTemplate>

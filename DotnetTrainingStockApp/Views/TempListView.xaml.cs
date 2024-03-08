@@ -33,7 +33,9 @@ public partial class TempListView : ContentPage
 
 		ItemsListView.ItemsSource = scannedEntities;
 		ItemsListView.IsVisible = scannedEntities.Count != 0;
-	}
+		EmptyListViewMessage.IsVisible = scannedEntities.Count == 0;
+
+    }
 }
 
 //need to create this class because image and tags are saved as byte array and string in database.
