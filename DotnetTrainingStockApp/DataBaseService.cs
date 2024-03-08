@@ -1,12 +1,5 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+
 namespace DotnetTrainingStockApp
 {
     class DataBaseService
@@ -49,39 +42,5 @@ namespace DotnetTrainingStockApp
         public string Tags { get; set; }
         [Column("Image")]
         public byte[] Image { get; set; }
-    }
-
-    public class ScannedEntities
-    {
-        public long Id { get; set; }
-        public string ExpiryDate {get;set;}
-        public List<string> TagsList { get; set; }
-        public ImageSource EntityImageSource { get; set; }    
-    }
-
-    public class ScannedEntitiesContextModel
-    {
-        private DataBaseService dataBaseService;
-
-        public ScannedEntitiesContextModel()
-        {
-            dataBaseService = new DataBaseService();
-        }
-
-        public async Task<List<ScannedEntities>> getItemsFromDb()
-        {
-            List<ScannedEntities> entities = new List<ScannedEntities>();
-            foreach(ScannedEntity entity in await dataBaseService.GetAllScannedEntities())
-            {
-                entities.Add(new ScannedEntities
-                {
-                    Id = entity.Id,
-                    ExpiryDate = entity.ExpiryDate,
-                    TagsList = JsonConvert.DeserializeObject<List<string>>(entity.Tags),
-                    EntityImageSource = ImageSource.FromStream(() => new MemoryStream(entity.Image))
-                });
-            }
-            return entities;
-        }
     }
 }

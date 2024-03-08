@@ -155,10 +155,13 @@ public partial class StockItemDetailsPage : ContentPage
 
     private async void AddToDbBtn_Clicked(object sender, EventArgs e)
     {
+        //converting tags into a string and image in bytes
         byte[] image = File.ReadAllBytes(Photo);
-        await dataBaseService.AddScannedEntity(new ScannedEntity { ExpiryDate = analyzeImage.expiryDate,
-        Tags = JsonSerializer.Serialize(analyzeImage.tags),
-        Image = image
+        await dataBaseService.AddScannedEntity(
+            new ScannedEntity { 
+                ExpiryDate = analyzeImage.expiryDate,
+                Tags = JsonSerializer.Serialize(analyzeImage.tags),
+                Image = image
         });
         await Shell.Current.GoToAsync("..");
     }

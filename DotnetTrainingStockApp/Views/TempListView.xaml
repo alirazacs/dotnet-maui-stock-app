@@ -10,11 +10,26 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     <StackLayout>
 
         <ListView x:Name="ItemsListView"
-                  HasUnevenRows="True" ItemsSource="{Binding scannedEntities}">
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding scannedEntities}"
+                  Header="Saved Scanned Items"
+                  BackgroundColor="#9BC8FA"
+                  SeparatorColor="#003775">
+            
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Label 
+                        Text="Saved Scanned Items"
+                        Background="CornflowerBlue"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center"/>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            
             <ListView.ItemTemplate >
                 <DataTemplate>
                     <ViewCell>
-                       
+
                         <Grid Padding="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -30,7 +45,7 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
                                 Grid.Row="2">
                                 
                                 <core:SfChipGroup 
-                                ItemsSource="{Binding TagsList}"              
+                                ItemsSource="{Binding EntityTagsList}"              
                                 ChipType="Action"
                                 HorizontalOptions="Center"
                                 Margin="0,10,0,10"
@@ -48,6 +63,7 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
                             
                         </Grid>
                         
+                    
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
