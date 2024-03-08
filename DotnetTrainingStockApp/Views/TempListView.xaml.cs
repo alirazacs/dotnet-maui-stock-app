@@ -1,8 +1,10 @@
+using System.Collections.ObjectModel;
+
 namespace DotnetTrainingStockApp.Views;
 
 public partial class TempListView : ContentPage
 {
-	public List<ScannedEntities> scannedEntities;
+	public ObservableCollection<ScannedEntities> scannedEntities {get; set;}
 	private ScannedEntitiesContextModel scannedEntitiesContextModel;
 	public TempListView()
 	{
@@ -13,8 +15,8 @@ public partial class TempListView : ContentPage
 
 	private async void GetListFromDatabase()
 	{
-		scannedEntities = await scannedEntitiesContextModel.getItemsFromDb();
-		Console.WriteLine(scannedEntities);
-        ItemsListView.ItemsSource = scannedEntities;
+		List<ScannedEntities> list = await scannedEntitiesContextModel.getItemsFromDb();
+		scannedEntities = new ObservableCollection<ScannedEntities>(list);
+		BindingContext = this;
 	}
 }

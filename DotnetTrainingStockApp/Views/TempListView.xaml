@@ -10,11 +10,11 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     <StackLayout>
 
         <ListView x:Name="ItemsListView"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True" ItemsSource="{Binding scannedEntities}">
             <ListView.ItemTemplate >
                 <DataTemplate>
                     <ViewCell>
-
+                       
                         <Grid Padding="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
