@@ -15,6 +15,6 @@ public partial class TempListView : ContentPage
 	{
 		scannedEntities = await scannedEntitiesContextModel.getItemsFromDb();
 		Console.WriteLine(scannedEntities);
-		ItemsListView.ItemsSource = scannedEntities;
+        ItemsListView.ItemsSource = scannedEntities;
 	}
 }

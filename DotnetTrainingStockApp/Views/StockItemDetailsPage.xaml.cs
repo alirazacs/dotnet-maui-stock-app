@@ -109,6 +109,12 @@ public partial class StockItemDetailsPage : ContentPage
                 tags.Add(obj.Name);
                 Console.WriteLine(obj.Name);
             }
+
+            foreach (DetectedTag obj in result?.Tags?.Values)
+            {
+                tags.Add(obj.Name);
+                Console.WriteLine(obj.Name);
+            }
         }
 
         foreach (DetectedTextBlock block in result.Read.Blocks)
@@ -155,7 +161,6 @@ public partial class StockItemDetailsPage : ContentPage
         Image = image
         });
         await Shell.Current.GoToAsync("..");
-        //ImageIcon.Source = ImageSource.FromStream(() => new MemoryStream(image)); ;
     }
 }
 
