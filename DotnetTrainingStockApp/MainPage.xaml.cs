@@ -116,7 +116,8 @@ namespace DotnetTrainingStockApp
 
         private void NextPageButtonClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ListView());
+            //Navigation.PushAsync(new ListView());
+            Navigation.PushAsync(new TempListView());
         }
     }
 

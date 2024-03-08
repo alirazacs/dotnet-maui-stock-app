@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DotnetTrainingStockApp.Views.TempListView"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             Title="List View">
+
+
+    <StackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ListView x:Name="ItemsListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Row="0" Source="{Binding EntityImageSource}"  WidthRequest="200" HeightRequest="200" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Start" />
+                            <Button HorizontalOptions="CenterAndExpand" Grid.Row="1" Text="{Binding ExpiryDate,StringFormat='{}Expiry Date: {0}'}" BackgroundColor="Red" TextColor="White" Margin="0,10,0,0"/>
+                            <!-- Second row: Label -->
+                            <!--<Label Grid.Row="1" Text="{Binding ExpiryDate,StringFormat='{}Expiry Date: {0}'}" BackgroundColor="Red" TextColor="White" HorizontalOptions="Center" />-->
+
+                            <!-- Third row: Label -->
+                            <Label Grid.Row="2" Text="{Binding ExpiryDate}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+
+</ContentPage>
