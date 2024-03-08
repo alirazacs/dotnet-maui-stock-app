@@ -46,5 +46,7 @@ namespace DotnetTrainingStockApp
         public string ExpiryDate { get; set; }
         [Column("Tags")]
         public string Tags { get; set; }
+        [Column("Image")]
+        public byte[] Image { get; set; }
     }
 }

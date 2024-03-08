@@ -2,6 +2,8 @@ using Azure;
 using Azure.AI.Vision.ImageAnalysis;
 using CommunityToolkit.Maui.Converters;
 using DotnetTrainingStockApp.ViewModels;
+using Microsoft.Maui.ApplicationModel;
+using System.Drawing;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
@@ -147,8 +149,13 @@ public partial class StockItemDetailsPage : ContentPage
 
     private async void AddToDbBtn_Clicked(object sender, EventArgs e)
     {
+        byte[] image = File.ReadAllBytes(Photo);
         await dataBaseService.AddScannedEntity(new ScannedEntity { ExpiryDate = analyzeImage.expiryDate,
-        Tags = JsonSerializer.Serialize(analyzeImage.tags)});
+        Tags = JsonSerializer.Serialize(analyzeImage.tags),
+        Image = image
+        });
+        await Shell.Current.GoToAsync("..");
+        //ImageIcon.Source = ImageSource.FromStream(() => new MemoryStream(image)); ;
     }
 }
 
