@@ -24,20 +24,23 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
                TextColor="White"
                HorizontalOptions="Center"/>
 
-            <core:SfChipGroup 
+            <ScrollView Orientation="Horizontal">
+                <core:SfChipGroup 
                 ItemsSource="{Binding Tags}"              
                 ChipType="Action"
                 HorizontalOptions="Center"
                 Margin="0,10,0,10"
                 ChipBackground="CornflowerBlue"
                 ChipTextColor="White">
-                
-                <core:SfChipGroup.Items>
-                    <core:SfChip
+
+                    <core:SfChipGroup.Items>
+                        <core:SfChip
                     Text="{Binding}" />
-                </core:SfChipGroup.Items>
-                
-            </core:SfChipGroup>
+                    </core:SfChipGroup.Items>
+
+                </core:SfChipGroup>
+            </ScrollView>
+
 
             <Label 
                 x:Name="ExpiryDateLabel"

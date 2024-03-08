@@ -32,7 +32,7 @@ xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
                             <!-- Third row: Label -->
                             <!--<Label Grid.Row="2" Text="{Binding ExpiryDate}" />-->
 
-
+                            
                             <core:SfChipGroup 
                                 ItemsSource="{Binding TagsList}"              
                                 ChipType="Action"
