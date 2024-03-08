@@ -37,7 +37,7 @@
                 Clicked="OnSelectPhotoBtnClicked"
                 HorizontalOptions="Fill" />
             <Button 
-                Text="Move to next page"
+                Text="View Saved Items"
                 Clicked="NextPageButtonClicked"/>
         </VerticalStackLayout>
     </ScrollView>
