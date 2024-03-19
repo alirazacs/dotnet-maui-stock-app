@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
+xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DotnetTrainingStockApp"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             x:Class="DotnetTrainingStockApp.ListView"
+             Title="Cart Details">
+
+    <sf:SfDataGrid ItemsSource="{Binding ItemsList}"
+                   AutoGenerateColumnsMode="None"
+                   GridLinesVisibility="Both"
+                   HeaderGridLinesVisibility="Both"
+                   SortingMode="Single" x:Name="DataGrid" >
+  
+        
+        <sf:SfDataGrid.Columns >
+            <sf:DataGridTextColumn 
+                AllowSorting="True" 
+                MappingName="ItemName"
+                HeaderText="Name"
+                ColumnWidthMode="Fill"
+                >
+            </sf:DataGridTextColumn>
+            <sf:DataGridNumericColumn 
+                AllowSorting="True" 
+                MappingName="Quanity"      
+                HeaderText="Quantity"
+                ColumnWidthMode="Fill"
+                >
+            </sf:DataGridNumericColumn>
+            <sf:DataGridNumericColumn 
+                AllowSorting="True" 
+                MappingName="ItemPrice"      
+                HeaderText="Price"
+                ColumnWidthMode="Fill"
+                >
+            </sf:DataGridNumericColumn>
+            <sf:DataGridNumericColumn 
+                AllowSorting="True" 
+                MappingName="TotalAmount"      
+                HeaderText="Total"
+                ColumnWidthMode="Fill"
+                >
+            </sf:DataGridNumericColumn>
+            
+            <sf:DataGridTemplateColumn ColumnWidthMode="Fill">
+                <sf:DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button 
+                            Text="Remove" 
+                            FontSize="Micro" 
+                            Margin="2" 
+                            Clicked="DeleteItem" 
+                            CommandParameter="{Binding}"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand" />
+                    </DataTemplate>
+                </sf:DataGridTemplateColumn.CellTemplate>
+            </sf:DataGridTemplateColumn>
+            
+        </sf:SfDataGrid.Columns>
+        <sf:SfDataGrid.GroupSummaryRows>
+            <sf:DataGridSummaryRow >
+              
+            </sf:DataGridSummaryRow>
+        </sf:SfDataGrid.GroupSummaryRows>
+    </sf:SfDataGrid>
+</ContentPage>

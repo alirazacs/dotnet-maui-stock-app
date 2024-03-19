@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DotnetTrainingStockApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <!--<image
+                source="dotnet_bot.png"
+                heightrequest="185"
+                aspect="aspectfit"
+                semanticproperties.description="dot net bot in a race car number eight" />-->
+            <Label
+                Text="Hello!"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Welcome to the &#10; Smart Stock App"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Please take a new photo or select an existing one" />
+
+            <Button
+                x:Name="TakePhotoBtn"
+                Text="Take Photo" 
+                SemanticProperties.Hint="Opens Camera to take a new photo"
+                Clicked="OnTakePhotoBtnClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="SelectPhotoBtn"
+                Text="Select Photo" 
+                SemanticProperties.Hint="Opens Gallery to select an existing photo"
+                Clicked="OnSelectPhotoBtnClicked"
+                HorizontalOptions="Fill" />
+            <Button 
+                Text="View Saved Items"
+                Clicked="NextPageButtonClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

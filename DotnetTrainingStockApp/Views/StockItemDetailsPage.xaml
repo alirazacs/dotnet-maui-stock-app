@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DotnetTrainingStockApp.Views.StockItemDetailsPage"
+             xmlns:viewmodel="clr-namespace:DotnetTrainingStockApp.ViewModels"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             x:DataType="viewmodel:StockItemDetailsViewModel"
+             Shell.NavBarIsVisible="True"
+             Title="Item Details Page">
+    <VerticalStackLayout>
+        <Label 
+                Text="Item details"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+        <Image Source="{Binding Path}" HeightRequest="200" WidthRequest="200" />
+        <ActivityIndicator IsRunning="False" Color="Blue" IsVisible="False" x:Name="ActivityHandler"/>
+        <VerticalStackLayout x:Name="ContentLayout" Margin="10">
+            <Label Text="Detected Labels" 
+               FontSize="Large"
+               Margin="15,0"
+               BackgroundColor="CornflowerBlue"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+
+            <ScrollView Orientation="Horizontal">
+                <core:SfChipGroup 
+                ItemsSource="{Binding Tags}"              
+                ChipType="Action"
+                HorizontalOptions="Center"
+                Margin="0,10,0,10"
+                ChipBackground="CornflowerBlue"
+                ChipTextColor="White">
+
+                    <core:SfChipGroup.Items>
+                        <core:SfChip
+                    Text="{Binding}" />
+                    </core:SfChipGroup.Items>
+
+                </core:SfChipGroup>
+            </ScrollView>
+
+
+            <Label 
+                x:Name="ExpiryDateLabel"
+                Text="{Binding ExpiryDate,StringFormat='{}Expiry Date: {0}'}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="Red"
+            />
+
+            <Button
+            x:Name="AddToDbBtn"
+            Text="Add to database" 
+            Clicked="AddToDbBtn_Clicked"
+            HorizontalOptions="Center"
+            Margin="0,5,0,0"/>
+
+        </VerticalStackLayout>
+
+
+
+    </VerticalStackLayout>
+</ContentPage>
