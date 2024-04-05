@@ -73,7 +73,7 @@ public partial class StockItemDetailsPage : ContentPage
     private async Task<AnalyzedImage> AnalyzeImage(byte[] data)
     {
 
-        //images used for scanning expiry date:
+        //images that can be used for scanning expiry date:
         //https://lovefoodhatewaste.co.nz/wp-content/uploads/2016/03/Butter-best-before-date-1920-cropped.jpg
         //https://res.cloudinary.com/bunch-media-library/image/upload/w_645,h_378,c_fill,g_faces,q_auto,f_auto,g_auto,fl_lossy/v1605837183/articles/apw7xpihtlrdf5ckdhic.jpg
         //https://www.shutterstock.com/shutterstock/photos/2171820503/display_1500/stock-photo-selective-focus-on-manufacturing-date-and-expiry-date-indicator-aka-mfg-and-exp-dates-in-the-bottle-2171820503.jpg
