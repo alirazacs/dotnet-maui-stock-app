@@ -82,8 +82,8 @@ public partial class StockItemDetailsPage : ContentPage
 
         BinaryData binaryData = new BinaryData(data);
         int maxTag = 5;
-        string endpoint = "https://stockvision.cognitiveservices.azure.com/";
-        string key = "209f0f88a4fd4522808428efe55be4c3";
+        string endpoint = "https://smartstockvision.cognitiveservices.azure.com/";
+        string key = "93dedf53a6b743a5b61580088c7fe82a";
         List<string> dates = new List<string>();
         List<string> tags = new List<string>();
         string expiryDate = null;
