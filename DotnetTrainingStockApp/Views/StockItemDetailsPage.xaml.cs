@@ -16,6 +16,8 @@ public partial class StockItemDetailsPage : ContentPage
 	public string? Photo {  get; set; }
     private AnalyzedImage analyzeImage { get; set; }
     private DataBaseService dataBaseService { get; set; }
+    private string AzureCoginitiveServiceConnectionString = "https://smartstockvision.cognitiveservices.azure.com/";
+    private string AzureCoginitiveServiceKey = "93dedf53a6b743a5b61580088c7fe82a";
     public StockItemDetailsPage(StockItemDetailsViewModel stockItemDetailsViewModel)
 	{
 		InitializeComponent();
@@ -73,22 +75,13 @@ public partial class StockItemDetailsPage : ContentPage
     private async Task<AnalyzedImage> AnalyzeImage(byte[] data)
     {
 
-        //images that can be used for scanning expiry date:
-        //https://lovefoodhatewaste.co.nz/wp-content/uploads/2016/03/Butter-best-before-date-1920-cropped.jpg
-        //https://res.cloudinary.com/bunch-media-library/image/upload/w_645,h_378,c_fill,g_faces,q_auto,f_auto,g_auto,fl_lossy/v1605837183/articles/apw7xpihtlrdf5ckdhic.jpg
-        //https://www.shutterstock.com/shutterstock/photos/2171820503/display_1500/stock-photo-selective-focus-on-manufacturing-date-and-expiry-date-indicator-aka-mfg-and-exp-dates-in-the-bottle-2171820503.jpg
-        //https://pirg.org/edfund/wp-content/uploads/2021/09/Best-ByCan-1-scaled.jpg
-        //https://prescriptionhope.com/wp-content/uploads/2020/01/Do-Medications-Expire.jpg
-
         BinaryData binaryData = new BinaryData(data);
         int maxTag = 5;
-        string endpoint = "https://smartstockvision.cognitiveservices.azure.com/";
-        string key = "93dedf53a6b743a5b61580088c7fe82a";
         List<string> dates = new List<string>();
         List<string> tags = new List<string>();
         string expiryDate = null;
 
-        ImageAnalysisClient client = new ImageAnalysisClient(new Uri(endpoint), new AzureKeyCredential(key));
+        ImageAnalysisClient client = new ImageAnalysisClient(new Uri(AzureCoginitiveServiceConnectionString), new AzureKeyCredential(AzureCoginitiveServiceKey));
 
         ImageAnalysisResult result = await client.AnalyzeAsync(binaryData, VisualFeatures.Tags | VisualFeatures.Read);
 
